@@ -1,6 +1,6 @@
 {
     "name": "dr4cary5/mshw-remote-browser",
-    "description": "A modern, ephemeral remote proxy browser for GitHub Actions.",
+    "description": "Modern ephemeral remote proxy browser for GitHub Actions.",
     "type": "project",
     "license": "MIT",
     "require": {
@@ -10,6 +10,11 @@
         "masterminds/html5": "^2.9",
         "vlucas/phpdotenv": "^5.6",
         "guzzlehttp/psr7": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "MSHW\\": "src/"
+        }
     },
     "config": {
         "optimize-autoloader": true,
