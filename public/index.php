@@ -20,10 +20,10 @@ $encodedStart = base64_encode($startUrl);
             <button id="btn-forward" title="Forward">→</button>
             <button id="btn-reload" title="Reload">↻</button>
         </div>
-<form id="url-form" class="url-input" autocomplete="off" style="flex:1; display:flex; gap:0.5rem;">
-    <input type="text" id="address-bar" value="<?= htmlspecialchars($startUrl) ?>" 
-           placeholder="example.com یا https://..." style="flex:1;" autofocus>
-    <button type="submit" style="background:var(--accent); color:#fff; border:none; padding:0.4rem 1rem; border-radius:4px; cursor:pointer;">
+        <form id="url-form" class="url-input" autocomplete="off" style="flex:1; display:flex; gap:0.5rem;">
+              <input type="text" id="address-bar" value="<?= htmlspecialchars($startUrl) ?>"
+                  placeholder="example.com یا https://..." style="flex:1;" autofocus>
+      <button type="submit" style="background:var(--accent); color:#fff; border:none; padding:0.4rem 1rem; border-radius:4px; cursor:pointer;">
         Go
     </button>
 </form>
@@ -41,8 +41,18 @@ $encodedStart = base64_encode($startUrl);
             <label><input type="checkbox" id="toggle-cf" checked> Cloudflare Headers</label>
         </aside>
 
-        <iframe id="content-frame" src="/proxy.php?q=<?= $encodedStart ?>" sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals" frameborder="0"></iframe>
-    </main>
+       <!-- 
+  تغییرات: 
+  1. حذف allow-same-origin برای رفع هشدار (اگر سایت مقصد به کوکی‌های iframe نیاز نداشت)
+  2. افزودن allow-popups-to-escape-sandbox برای باز شدن لینک‌های جدید
+  نکته: اگر سایتی لود نشد، allow-same-origin را برگردانید.
+-->
+<iframe id="content-frame" 
+        src="/proxy.php?q=<?= $encodedStart ?>" 
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" 
+        frameborder="0"
+        style="width:100%; height:100%; border:none; background:#fff;">
+</iframe>
 
     <script src="/assets/js/shell.js"></script>
 </body>
