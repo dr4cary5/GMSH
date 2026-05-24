@@ -20,9 +20,13 @@ $encodedStart = base64_encode($startUrl);
             <button id="btn-forward" title="Forward">→</button>
             <button id="btn-reload" title="Reload">↻</button>
         </div>
-        <form id="url-form" class="url-input" autocomplete="off">
-            <input type="text" id="address-bar" value="<?= htmlspecialchars($startUrl) ?>" placeholder="Enter URL or search...">
-        </form>
+<form id="url-form" class="url-input" autocomplete="off" style="flex:1; display:flex; gap:0.5rem;">
+    <input type="text" id="address-bar" value="<?= htmlspecialchars($startUrl) ?>" 
+           placeholder="example.com یا https://..." style="flex:1;" autofocus>
+    <button type="submit" style="background:var(--accent); color:#fff; border:none; padding:0.4rem 1rem; border-radius:4px; cursor:pointer;">
+        Go
+    </button>
+</form>
         <div class="window-controls">⋮</div>
     </header>
 
